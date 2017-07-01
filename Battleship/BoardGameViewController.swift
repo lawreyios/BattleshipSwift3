@@ -169,20 +169,24 @@ extension BoardGameViewController: BoardDelegate {
             
             if self.totalShipsPlaced == 3  {
                 self.collectionView.reloadData()
+                self.collectionView.isUserInteractionEnabled = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.currentTeam = .B
                     self.bottomLabel.text = teamBStrings[0]
                     self.collectionView.reloadData()
+                    self.collectionView.isUserInteractionEnabled = true
                 }
             }
             
             if self.totalShipsPlaced == 6 {
                 self.collectionView.reloadData()
+                self.collectionView.isUserInteractionEnabled = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.currentTeam = .A
                     self.bottomLabel.text = teamAStrings[1]
                     self.gameState = .Playing
                     self.collectionView.reloadData()
+                    self.collectionView.isUserInteractionEnabled = true
                 }
             }
         }
